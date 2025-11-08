@@ -1,4 +1,4 @@
-# 012 Select, From & Where Statement
+# Select, From & Where Statement
 
 ```sql
 SELECT email
