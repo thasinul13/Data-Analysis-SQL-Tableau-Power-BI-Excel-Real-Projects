@@ -1,0 +1,24 @@
+016 Show all columns for customers who are from New York, London or Mumbai using IN
+Instructions
+A table named Customer has been created.
+
+Display all columns for customers who's cust_city in in any of the following:
+
+New York
+
+London
+
+Mumbai
+
+Test(s)
+Solution(s)
+SELECT *
+FROM classicmodels.customers
+WHERE city IN ('New York', 'London', 'Mumbai');
+
+
+-- See the columns of the table
+DESCRIBE classicmodels.customers;
+
+-- Verify distinct city values
+SELECT DISTINCT city FROM classicmodels.customers ORDER BY city;
