@@ -1,0 +1,10 @@
+SELECT t1.orderNumber, t1.orderDate, t2.customerName, t2.country
+FROM orders t1
+INNER JOIN customers t2
+  ON t1.customerNumber = t2.customerNumber;
+
+
+SELECT *
+FROM orders t1
+INNER JOIN customers t2
+  ON t1.customerNumber = t2.customerNumber;
