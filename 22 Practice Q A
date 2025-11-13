@@ -1,0 +1,121 @@
+Before the questions – mental model
+
+You’re working with (classicmodels):
+
+customers table → has things like
+customerNumber, customerName, maybe contactFirstName, contactLastName
+
+orders table → has
+orderNumber, orderDate, status, customerNumber
+
+Key:
+customerNumber is the link between both tables.
+That’s what you’ll join on.
+
+General join skeleton:
+
+SELECT  ...columns you want...
+FROM    customers AS c
+JOIN    orders AS o
+   ON   c.customerNumber = o.customerNumber;
+
+
+You’ll only change:
+
+which JOIN type (INNER / LEFT)
+
+which columns you SELECT
+
+Q1
+
+Show the customer first name, last name, orderdate and status for each order in the orders table with a matching customer in the customer table.
+
+Think step-by-step:
+
+Which table has the name?
+→ customers
+
+Which table has orderDate & status?
+→ orders
+
+“for each order … with a matching customer”
+
+That means: only orders that actually have a customer.
+
+If the order had no matching customer, we don’t care.
+
+This is the classic INNER JOIN situation.
+
+So structure:
+
+SELECT  c.????, c.????, o.????, o.????   -- fill these
+FROM    customers AS c
+INNER JOIN orders AS o
+   ON   c.customerNumber = o.customerNumber;
+
+
+👉 Your job now:
+
+Replace the ???? with the correct column names for:
+
+first name
+
+last name
+
+order date
+
+status
+
+Run it and see if it matches the question text.
+
+Q2
+
+Display the first name and last name of all customers, and the order date and ordernumber of all their orders, even if the customer made no orders.
+
+Again:
+
+Columns:
+
+Names → customers
+
+orderDate, orderNumber → orders
+
+“all customers … even if the customer made no orders”
+
+That means customers who don’t have matching orders must still appear.
+
+This is a LEFT JOIN with customers on the left.
+
+Skeleton:
+
+SELECT  c.????, c.????, o.????, o.????   -- fill
+FROM    customers AS c
+LEFT JOIN orders AS o
+   ON   c.customerNumber = o.customerNumber;
+
+
+If a customer has no orders, the orderDate and orderNumber will show as NULL, but the customer still appears — exactly what the question asks.
+
+How you can practice (no memorising, just patterns)
+
+For every word in the question, map it to SQL:
+
+“all customers” → customers is the main (left) table
+
+“even if … no orders” → LEFT JOIN
+
+“with a matching …” → INNER JOIN
+
+Always write this 4-line skeleton first:
+
+SELECT ...
+FROM   table1 alias1
+JOIN   table2 alias2
+   ON  alias1.key = alias2.key;
+
+
+Then just:
+
+choose JOIN type (INNER/LEFT)
+
+fill column names in SELECT
