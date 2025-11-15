@@ -1,0 +1,5 @@
+SELECT paymentDate,
+       max(amount) AS highest_payment,
+       min(amount) AS lowest_payment
+FROM classicmodels.payments
+GROUP BY paymentDate;
