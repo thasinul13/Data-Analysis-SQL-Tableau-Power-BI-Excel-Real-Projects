@@ -1,0 +1,23 @@
+FInding out coustomer order total 
+
+
+select customername, count(orderNumber) as orders
+from orders t1
+inner join customers t2
+on t1.customerNumber = t2.customerNumber
+group by customername
+order by orders desc;
+
+
+
+
+order history question 
+
+
+select customername,
+       min(orderDate) as first_orderdate,
+       max(orderDate) as latest_orderdate
+from orders t1
+inner join customers t2
+on t1.customerNumber = t2.customerNumber
+group by customername;
