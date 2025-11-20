@@ -4,3 +4,6 @@ from
      from orders
      group by orderdate) t1
 where orderdate > '2005-05-01';
+
+
+Calculate the average daily number of orders for all dates later than 2005-05-01, using a subquery that counts orders per date.
